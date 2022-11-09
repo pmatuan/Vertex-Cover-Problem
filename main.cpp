@@ -8,19 +8,6 @@ set<int> V; // tập toàn bộ đỉnh
 set<int> S; // tập đỉnh bao phủ
 set<int> T; // tập V - S
 
-// Kiểm tra S có phải tập đỉnh bao phủ k
-bool check(){ 
-    for(set<int>::iterator it = T.begin(); it != T.end(); it++){
-        int VertexCurrent = *it;
-        vector<int> AdjVertexCurrent = adj[VertexCurrent];
-        for(vector<int>::iterator it1 = AdjVertexCurrent.begin(); it1 != AdjVertexCurrent.end(); it1++){
-            int vertex = *it1;
-            if(!T.count(vertex)) return false;
-        }
-    }
-    return true;
-}
-
 void LoadInput(char *input, char *input1){
     // Load tập cạnh
     ifstream inp(input);
@@ -47,6 +34,19 @@ void CreateT(){
             T.insert(*it);
         }
     }
+}
+
+// Kiểm tra S có phải tập đỉnh bao phủ k
+bool check(){ 
+    for(set<int>::iterator it = T.begin(); it != T.end(); it++){
+        int VertexCurrent = *it;
+        vector<int> AdjVertexCurrent = adj[VertexCurrent];
+        for(vector<int>::iterator it1 = AdjVertexCurrent.begin(); it1 != AdjVertexCurrent.end(); it1++){
+            int vertex = *it1;
+            if(T.count(vertex)) return false;
+        }
+    }
+    return true;
 }
 
 void Output(){
