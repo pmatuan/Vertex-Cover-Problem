@@ -3,7 +3,7 @@ using namespace std;
 
 const int N = 2e6; // Số đỉnh của 3 bài < 2 triệu, nên khai báo như này để đỡ cấp phát động
 int NumberOfNodes, NumberOfVertexCover, u, v; 
-vector<int> adj[N+6]; // danh sách kề
+list<int> adj[N+6]; // danh sách kề
 set<int> V; // tập toàn bộ đỉnh
 set<int> S; // tập đỉnh bao phủ
 set<int> T; // tập V - S
@@ -40,8 +40,8 @@ void CreateT(){
 bool check(){ 
     for(set<int>::iterator it = T.begin(); it != T.end(); it++){
         int VertexCurrent = *it;
-        vector<int> AdjVertexCurrent = adj[VertexCurrent];
-        for(vector<int>::iterator it1 = AdjVertexCurrent.begin(); it1 != AdjVertexCurrent.end(); it1++){
+        list<int> AdjVertexCurrent = adj[VertexCurrent];
+        for(list<int>::iterator it1 = AdjVertexCurrent.begin(); it1 != AdjVertexCurrent.end(); it1++){
             int vertex = *it1;
             if(T.count(vertex)) return false;
         }
