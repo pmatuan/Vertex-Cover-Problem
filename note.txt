@@ -1,0 +1,11 @@
+.vc: tập S là tập đỉnh cần kiểm tra xem có bao phủ không
+.txt: tập E là đồ thị bao gồm tất cả các cạnh
+
+
+thuật toán:
+    + từ tập E => tập V là tập đỉnh đồ thị (unique => set)
+    + tập T = V - S 
+    + Kiểm tra trong tập T có 2 đỉnh nào tạo thành 1 cạnh không, nếu có thì S không bao phủ, ngược lại thì phải
+
+
+    + 
