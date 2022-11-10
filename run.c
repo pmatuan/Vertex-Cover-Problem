@@ -3,10 +3,14 @@
 #include <string.h>
 
 const char *cases[] = {
-  "./main demo.txt demo.vc",
-  "./main roadNet-CA.txt roadNet-CA.vc",
-  "./main roadNet-PA.txt roadNet-PA.vc",
-  "./main roadNet-TX.txt roadNet-TX.vc"
+  "./algo1 demo.txt demo.vc",
+  "./algo2 demo.txt demo.vc",
+  "./algo1 roadNet-CA.txt roadNet-CA.vc",
+  "./algo2 roadNet-CA.txt roadNet-CA.vc",
+  "./algo1 roadNet-PA.txt roadNet-PA.vc",
+  "./algo2 roadNet-PA.txt roadNet-PA.vc",
+  "./algo1 roadNet-TX.txt roadNet-TX.vc",
+  "./algo2 roadNet-TX.txt roadNet-TX.vc"
 };
 
 char *real_command(const char *cmd) {
