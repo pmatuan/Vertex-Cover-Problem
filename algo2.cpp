@@ -2,8 +2,8 @@
 using namespace std;
 
 const int N = 2e6; // Số đỉnh của 3 bài < 2 triệu, nên khai báo như này để đỡ cấp phát động
-int NumberOfNodes, NumberOfEdges, NumberOfVertexCover, u, v; 
-list<int> adj[N+1]; // danh sách kề
+int NumberOfNodes, NumberOfEdges, NumberOfVertexCover; 
+list<int> adj[N]; // danh sách kề
 set<int> V; // tập toàn bộ đỉnh
 set<int> S; // tập đỉnh bao phủ
 set<int> T; // tập V - S
@@ -33,12 +33,13 @@ void LoadInput(char *inputGraph, char *inputVertexCover){
 void CreateT(){
     // So sánh tự viết và sử dùng set_difference, thấy set_difference nhanh hơn khoảng 1s
 
-
-    // for(set<int>::iterator it = V.begin(); it != V.end(); it++){
-    //     if(!S.count(*it)){
-    //         T.insert(*it);
-    //     }
-    // }
+    /*
+    for(set<int>::iterator it = V.begin(); it != V.end(); it++){
+        if(!S.count(*it)){
+            T.insert(*it);
+        }
+    }
+    */
     set_difference(begin(V), end(V),
                    begin(S), end(S),
                    inserter(T, end(T)));
@@ -50,8 +51,8 @@ bool check(){
         int VertexCurrent = *it;
         list<int> AdjVertexCurrent = adj[VertexCurrent];
         for(list<int>::iterator it1 = AdjVertexCurrent.begin(); it1 != AdjVertexCurrent.end(); it1++){
-            int vertex = *it1;
-            if(T.count(vertex)) return false;
+            int node = *it1;
+            if(T.count(node)) return false;
         }
     }
     return true;
