@@ -4,7 +4,7 @@ using namespace std;
 #define pair_ii pair<int,int>
 
 const int N = 2e6; // Số đỉnh của 3 bài < 2 triệu, nên khai báo như này để đỡ cấp phát động
-int NumberOfNodes, NumberOfEdges, NumberOfVertexCover, edges = 0; 
+int NumberOfNodes, NumberOfEdges, NumberOfVertexCover; 
 vector<int> adj[N+1]; // danh sách kề
 set<pair_ii> TraversedEdge;
 
@@ -13,7 +13,6 @@ void CountEdgesOfVertexCover(int vertex){
     for(int i = 0; i < adj[vertex].size(); i++) {
         int node = adj[vertex][i];
         if(!TraversedEdge.count(pair_ii(vertex, node))) {
-            edges++;
             TraversedEdge.insert(pair_ii(vertex, node));
             TraversedEdge.insert(pair_ii(node, vertex));
         }
@@ -44,7 +43,7 @@ void LoadInput(char *inputGraph, char *inputVertexCover){
 
 
 void Output(){
-    if(NumberOfEdges/2 == edges){
+    if(NumberOfEdges == TraversedEdge.size()){
         cout << "Là tập đỉnh bao phủ" << endl;
     }
     else{
