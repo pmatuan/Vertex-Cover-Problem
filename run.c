@@ -3,6 +3,7 @@
 #include <string.h>
 
 const char *cases[] = {
+  "g++ algo1.cpp -o algo1 && g++ algo2.cpp -o algo2",
   "./algo1 demo.txt demo.vc",
   "./algo2 demo.txt demo.vc",
   "./algo1 roadNet-CA.txt roadNet-CA.vc",
@@ -22,12 +23,12 @@ char *real_command(const char *cmd) {
 
 int main() {
   int n = sizeof(cases)/sizeof(cases[0]);
-  for (int i = 0; i < n; ++i) {
+  real_command(cases[0]);
+  for (int i = 1; i < n; ++i) {
     const char *command = real_command(cases[i]);
-    printf("case %d: %s\n", i + 1, cases[i]);
+    printf("case %d: %s\n", i , cases[i]);
     system(command);
-    printf("Press Enter to continue...");
-    while (getchar() != '\n') ;
+    printf("\n\n");
   }
   return 0;
 }

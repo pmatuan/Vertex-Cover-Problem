@@ -6,16 +6,16 @@ using namespace std;
 const int N = 2e6; // Số đỉnh của 3 bài < 2 triệu, nên khai báo như này để đỡ cấp phát động
 int NumberOfNodes, NumberOfEdges, NumberOfVertexCover, edges = 0; 
 vector<int> adj[N+1]; // danh sách kề
-map<pair_ii, int> TraversedEdge;
+set<pair_ii> TraversedEdge;
 
 
 void CountEdgesOfVertexCover(int vertex){
     for(int i = 0; i < adj[vertex].size(); i++) {
         int node = adj[vertex][i];
-        if(!TraversedEdge[pair_ii(vertex, node)]) {
+        if(!TraversedEdge.count(pair_ii(vertex, node))) {
             edges++;
-            TraversedEdge[pair_ii(vertex, node)] = 1;
-            TraversedEdge[pair_ii(node, vertex)] = 1;
+            TraversedEdge.insert(pair_ii(vertex, node));
+            TraversedEdge.insert(pair_ii(node, vertex));
         }
     }
 }
