@@ -4,27 +4,30 @@
 
 const char *cases[] = {
   "g++ algo1.cpp -o algo1 && g++ algo2.cpp -o algo2",
-  "./algo1 demo.txt demo.vc",
-  "./algo2 demo.txt demo.vc",
-  "./algo1 roadNet-CA.txt roadNet-CA.vc",
-  "./algo2 roadNet-CA.txt roadNet-CA.vc",
-  "./algo1 roadNet-PA.txt roadNet-PA.vc",
-  "./algo2 roadNet-PA.txt roadNet-PA.vc",
-  "./algo1 roadNet-TX.txt roadNet-TX.vc",
-  "./algo2 roadNet-TX.txt roadNet-TX.vc",
+  "./algo1 Data/demo.txt Data/demo.vc",
+  "./algo2 Data/demo.txt Data/demo.vc",
+  
 
-  "./algo1 CA-AstroPh.txt CA-AstroPh.vc",
-  "./algo2 CA-AstroPh.txt CA-AstroPh.vc",
-  "./algo1 CA-CondMat.txt CA-CondMat.vc",
-  "./algo2 CA-CondMat.txt CA-CondMat.vc",
-  "./algo1 CA-GrQc.txt CA-GrQc.vc",
-  "./algo2 CA-GrQc.txt CA-GrQc.vc",
-  "./algo1 CA-HepPh.txt CA-HepPh.vc",
-  "./algo2 CA-HepPh.txt CA-HepPh.vc",
-  "./algo1 CA-HepTh.txt CA-HepTh.vc",
-  "./algo2 CA-HepTh.txt CA-HepTh.vc",
-  "./algo1 Email-Enron.txt Email-Enron.vc",
-  "./algo2 Email-Enron.txt Email-Enron.vc",
+  "./algo1 Data/CA-AstroPh.txt Data/CA-AstroPh.vc",
+  "./algo2 Data/CA-AstroPh.txt Data/CA-AstroPh.vc",
+  "./algo1 Data/CA-CondMat.txt Data/CA-CondMat.vc",
+  "./algo2 Data/CA-CondMat.txt Data/CA-CondMat.vc",
+  "./algo1 Data/CA-GrQc.txt Data/CA-GrQc.vc",
+  "./algo2 Data/CA-GrQc.txt Data/CA-GrQc.vc",
+  "./algo1 Data/CA-HepPh.txt Data/CA-HepPh.vc",
+  "./algo2 Data/CA-HepPh.txt Data/CA-HepPh.vc",
+  "./algo1 Data/CA-HepTh.txt Data/CA-HepTh.vc",
+  "./algo2 Data/CA-HepTh.txt Data/CA-HepTh.vc",
+  "./algo1 Data/Email-Enron.txt Data/Email-Enron.vc",
+  "./algo2 Data/Email-Enron.txt Data/Email-Enron.vc",
+
+
+  "./algo1 Data/roadNet-CA.txt Data/roadNet-CA.vc",
+  "./algo2 Data/roadNet-CA.txt Data/roadNet-CA.vc",
+  "./algo1 Data/roadNet-PA.txt Data/roadNet-PA.vc",
+  "./algo2 Data/roadNet-PA.txt Data/roadNet-PA.vc",
+  "./algo1 Data/roadNet-TX.txt Data/roadNet-TX.vc",
+  "./algo2 Data/roadNet-TX.txt Data/roadNet-TX.vc"
 };
 
 char *real_command(const char *cmd) {
