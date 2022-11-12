@@ -1,34 +1,23 @@
-/*Lỗi ở hàm CountEdgesOfVertexCover do chưa triển khai ý tưởng dựa trên cgen đc*/
-
-
 #include "all.c"
-int NumberOfNodes, NumberOfEdges, NumberOfVertexCover; 
+int NumberOfNodes, NumberOfEdges, NumberOfVertexCover, count = 0; 
 const int N = 2e6;
-int count = 0;
-typedef struct pair{
-    int x;
-    int y;
-} pair;
-
-void CountEdgesOfVertexCover(struct gsllist **list, struct hmap *TraversedEdge, int vertex){
-    gsl_traverse(cur, list[vertex]){
+struct gsllist **adj;
+struct hset **TraversedEdge;
+void CountEdgesOfVertexCover(int vertex){
+    gsl_traverse(cur, adj[vertex]){
         int node = (int)cur->l;
-        gtype *value = hmap_value(TraversedEdge, gtype_l(vertex));
-        if(!value){
-            hmap_insert(TraversedEdge, gtype_l(vertex), gtype_l(1));
+        int check = hset_contains(TraversedEdge[vertex], gtype_l(node));
+        if(!check){
+            hset_insert(TraversedEdge[vertex], gtype_l(node));
+            hset_insert(TraversedEdge[node], gtype_l(vertex));
+            count++;
         }
-        else{
-            value->l++;   
-        }
-        hmap_insert(TraversedEdge, gtype_l(vertex), gtype_l(1));
-
     }
 }
 
-void LoadInput(char *inputGraph, char *inputVertexCover, struct gsllist **adj, struct hmap *TraversedEdge){
+void LoadInput(char *inputGraph, char *inputVertexCover){
     FILE *ReadGraph = fopen(inputGraph, "r");
     fscanf(ReadGraph, "%d %d", &NumberOfNodes, &NumberOfEdges);
-    /*Chưa cấp phát động*/
     int source, destination;
     while(fscanf(ReadGraph, "%d %d\n", &source, &destination) != EOF){
         gsl_push_back(adj[source], gtype_l(destination));
@@ -41,40 +30,39 @@ void LoadInput(char *inputGraph, char *inputVertexCover, struct gsllist **adj, s
     char c;
     int vertex;
     while(fscanf(ReadVertexCover, "%c %d\n", &c, &vertex)!= EOF){
-        CountEdgesOfVertexCover(adj, TraversedEdge, vertex);
+        CountEdgesOfVertexCover(vertex);
     }
     fclose(ReadVertexCover);
 }
 
 
-void Output(struct gsllist **adj, struct hmap *TraversedEdge){
-    hmap_traverse(key, value, TraversedEdge){
-        printf("%ld %ld\n", key->l, value->l);
-    }
 
-    // if(NumberOfEdges == hmap_size(TraversedEdge)){
-    //     printf("%s\n", "Là tập đỉnh bao phủ");
-    // }
-    // else{
-    //     printf("%s\n", "Không là tập đỉnh bao phủ");
-    // }
+void Output(){
+    if(NumberOfEdges/2 == count){
+        printf("%s\n", "Là tập đỉnh bao phủ");
+    }
+    else{
+        printf("%s\n", "Không là tập đỉnh bao phủ");
+    }
 }
 int main(int argc, char* argv[]){
-    struct gsllist **adj = calloc(N, sizeof(struct gsllist *));
+    adj = calloc(N, sizeof(struct gsllist *));
+    TraversedEdge = calloc(N, sizeof(struct hset *));
     for(int i=0; i<N; i++){
         adj[i] = gsl_create_list(NULL);
+        TraversedEdge[i] = hset_create(gtype_hash_l, gtype_cmp_l, NULL);
     }
-    struct hmap *TraversedEdge = hmap_create(gtype_hash_l, gtype_cmp_l, NULL, NULL);
 
 
-    LoadInput(argv[1], argv[2], adj, TraversedEdge);
-    Output(adj, TraversedEdge);
+    LoadInput(argv[1], argv[2]);
+    Output(adj);
 
 
     for(int i=0; i<N; i++){
         gsl_free(adj[i]);
+        hset_free(TraversedEdge[i]);
     }
-    free(adj);
     free(TraversedEdge);
+    free(adj);
     return 0;
 }
