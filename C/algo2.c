@@ -14,11 +14,6 @@ struct hset *T;
     Lưu đồ thị theo danh sách kề: tạo mảng các gsl để lưu, trong đó gsl[i] là danh sách kề của đỉnh i.
     Nếu theo logic này thì em chỉ cần tạo mảng gsl với NumberOfNodes phần tử. Nhưng như thế bị báo lỗi.
     Thầy xem giúp em ạ
-    
-
-    Biên dịch: gcc -o algo2 algo2.c -I cgen
-               ./algo2 demo.txt demo.vc
-               ./algo2 CA-GrQc.txt CA-GrQc.vc
 */
 void LoadInput(char *inputGraph, char *inputVertexCover){
     FILE *ReadGraph = fopen(inputGraph, "r");
