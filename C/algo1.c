@@ -18,6 +18,12 @@ void CountEdgesOfVertexCover(int vertex){
 void LoadInput(char *inputGraph, char *inputVertexCover){
     FILE *ReadGraph = fopen(inputGraph, "r");
     fscanf(ReadGraph, "%d %d", &NumberOfNodes, &NumberOfEdges);
+    adj = calloc(N, sizeof(struct gsllist *));
+    TraversedEdge = calloc(N, sizeof(struct hset *));
+    for(int i=0; i<N; i++){
+        adj[i] = gsl_create_list(NULL);
+        TraversedEdge[i] = hset_create(gtype_hash_l, gtype_cmp_l, NULL);
+    }
     int source, destination;
     while(fscanf(ReadGraph, "%d %d\n", &source, &destination) != EOF){
         gsl_push_back(adj[source], gtype_l(destination));
@@ -46,13 +52,6 @@ void Output(){
     }
 }
 int main(int argc, char* argv[]){
-    adj = calloc(N, sizeof(struct gsllist *));
-    TraversedEdge = calloc(N, sizeof(struct hset *));
-    for(int i=0; i<N; i++){
-        adj[i] = gsl_create_list(NULL);
-        TraversedEdge[i] = hset_create(gtype_hash_l, gtype_cmp_l, NULL);
-    }
-
 
     LoadInput(argv[1], argv[2]);
     Output(adj);

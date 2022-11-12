@@ -1,5 +1,3 @@
-/*Lỗi cấp phát bộ nhớ, dòng 15*/
-
 #include "all.c"
 int NumberOfNodes, NumberOfEdges, NumberOfVertexCover; 
 const int N = 2e6;
@@ -7,27 +5,11 @@ struct gsllist **adj;
 struct hset *V;
 struct hset *S;
 struct hset *T;
-/*
-    file .txt bao gồm số lượng đỉnh và số lượng cạnh, tiếp theo là tập đỉnh nguồn đến đích
-    file .vc bao gồm số lượng đỉnh bao phủ, tiếp theo là các đỉnh bao phủ
 
-    Lưu đồ thị theo danh sách kề: tạo mảng các gsl để lưu, trong đó gsl[i] là danh sách kề của đỉnh i.
-    Nếu theo logic này thì em chỉ cần tạo mảng gsl với NumberOfNodes phần tử. Nhưng như thế bị báo lỗi.
-    Thầy xem giúp em ạ
-    
-
-    Biên dịch: gcc -o algo2 algo2.c -I cgen
-               ./algo2 demo.txt demo.vc
-               ./algo2 CA-GrQc.txt CA-GrQc.vc
-*/
 void LoadInput(char *inputGraph, char *inputVertexCover){
     FILE *ReadGraph = fopen(inputGraph, "r");
     fscanf(ReadGraph, "%d %d", &NumberOfNodes, &NumberOfEdges);
-    /*********************************************************/
-    /*Vấn đề nằm ở cấp phát chỗ này*/
-    /*Nếu thay NumberOfNodes = N = 2e6 thì chạy được với bộ dữ liệu nhỏ*/
     adj = calloc(N, sizeof(struct gsllist *));
-    /*********************************************************/
     for(int i=0; i<N; i++){
         adj[i] = gsl_create_list(NULL);
     }
