@@ -1,4 +1,4 @@
-/*Lỗi cấp phát bộ nhớ, dòng 15*/
+/*Lỗi cấp phát bộ nhớ, dòng 65*/
 
 #include "all.c"
 int NumberOfNodes, NumberOfEdges, NumberOfVertexCover; 
@@ -11,12 +11,11 @@ struct hset *T;
 void LoadInput(char *inputGraph, char *inputVertexCover){
     FILE *ReadGraph = fopen(inputGraph, "r");
     fscanf(ReadGraph, "%d %d", &NumberOfNodes, &NumberOfEdges);
-    printf("%d %d\n", NumberOfNodes, NumberOfEdges);
     /*********************************************************/
     /*Vấn đề nằm ở cấp phát chỗ này*/
-    adj = calloc(NumberOfNodes, sizeof(struct gsllist *));
+    adj = calloc(N, sizeof(struct gsllist *));
     /*********************************************************/
-    for(int i=0; i<NumberOfNodes; i++){
+    for(int i=0; i<N; i++){
         adj[i] = gsl_create_list(NULL);
     }
     int source, destination;
@@ -75,15 +74,15 @@ void Output(){
 int main(int argc, char* argv[]){
 
     LoadInput(argv[1], argv[2]);
-    T = CreateT();
+    struct hset *T = CreateT();
     Output();
 
-    for(int i=0; i<N; i++){
-        gsl_free(adj[i]);
-    }
-    free(adj);
-    hset_free(V);
-    hset_free(S);
-    hset_free(T);
+    // for(int i=0; i<N; i++){
+    //     gsl_free(adj[i]);
+    // }
+    // free(adj);
+    // hset_free(V);
+    // hset_free(S);
+    // hset_free(T);
     return 0;
 }
