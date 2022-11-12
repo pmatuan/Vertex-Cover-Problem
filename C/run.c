@@ -4,8 +4,20 @@
 
 const char *cases[] = {
   "gcc algo2.c -o algo2 -I cgen",
-  "valgrind ./algo2 ../Data/demo.txt Data/demo.vc",
-  "valgrind ./algo2 ../Data/CA-GrQc.txt Data/CA-GrQc.vc"
+  "./algo2 ../Data/demo.txt ../Data/demo.vc",
+  
+
+  "./algo2 ../Data/CA-AstroPh.txt ../Data/CA-AstroPh.vc",
+  "./algo2 ../Data/CA-CondMat.txt ../Data/CA-CondMat.vc",
+  "./algo2 ../Data/CA-GrQc.txt ../Data/CA-GrQc.vc",
+  "./algo2 ../Data/CA-HepPh.txt ../Data/CA-HepPh.vc",
+  "./algo2 ../Data/CA-HepTh.txt ../Data/CA-HepTh.vc",
+  "./algo2 ../Data/Email-Enron.txt ../Data/Email-Enron.vc",
+
+
+  "./algo2 ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc",
+  "./algo2 ../Data/roadNet-PA.txt ../Data/roadNet-PA.vc",
+  "./algo2 ../Data/roadNet-TX.txt ../Data/roadNet-TX.vc"
 };
 
 char *real_command(const char *cmd) {
