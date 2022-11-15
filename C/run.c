@@ -3,31 +3,34 @@
 #include <string.h>
 
 const char *cases[] = {
-  "gcc algo1.c -o algo1 -I cgen && gcc algo2.c -o algo2 -I cgen",
-  "./algo1 ../Data/demo.txt ../Data/demo.vc",
-  "./algo2 ../Data/demo.txt ../Data/demo.vc",
+  // "gcc algo1.c -o algo1 -I cgen && gcc algo2.c -o algo2 -I cgen",
+  // "./algo1 ../Data/demo.txt ../Data/demo.vc",
+  // "./algo2 ../Data/demo.txt ../Data/demo.vc",
   
 
-  "./algo1 ../Data/CA-AstroPh.txt ../Data/CA-AstroPh.vc",
-  "./algo2 ../Data/CA-AstroPh.txt ../Data/CA-AstroPh.vc",
-  "./algo1 ../Data/CA-CondMat.txt ../Data/CA-CondMat.vc",
-  "./algo2 ../Data/CA-CondMat.txt ../Data/CA-CondMat.vc",
-  "./algo1 ../Data/CA-GrQc.txt ../Data/CA-GrQc.vc",
-  "./algo2 ../Data/CA-GrQc.txt ../Data/CA-GrQc.vc",
-  "./algo1 ../Data/CA-HepPh.txt ../Data/CA-HepPh.vc",
-  "./algo2 ../Data/CA-HepPh.txt ../Data/CA-HepPh.vc",
-  "./algo1 ../Data/CA-HepTh.txt ../Data/CA-HepTh.vc",
-  "./algo2 ../Data/CA-HepTh.txt ../Data/CA-HepTh.vc",
-  "./algo1 ../Data/Email-Enron.txt ../Data/Email-Enron.vc",
-  "./algo2 ../Data/Email-Enron.txt ../Data/Email-Enron.vc",
+  // "./algo1 ../Data/CA-AstroPh.txt ../Data/CA-AstroPh.vc",
+  // "./algo2 ../Data/CA-AstroPh.txt ../Data/CA-AstroPh.vc",
+  // "./algo1 ../Data/CA-CondMat.txt ../Data/CA-CondMat.vc",
+  // "./algo2 ../Data/CA-CondMat.txt ../Data/CA-CondMat.vc",
+  // "./algo1 ../Data/CA-GrQc.txt ../Data/CA-GrQc.vc",
+  // "./algo2 ../Data/CA-GrQc.txt ../Data/CA-GrQc.vc",
+  // "./algo1 ../Data/CA-HepPh.txt ../Data/CA-HepPh.vc",
+  // "./algo2 ../Data/CA-HepPh.txt ../Data/CA-HepPh.vc",
+  // "./algo1 ../Data/CA-HepTh.txt ../Data/CA-HepTh.vc",
+  // "./algo2 ../Data/CA-HepTh.txt ../Data/CA-HepTh.vc",
+  // "./algo1 ../Data/Email-Enron.txt ../Data/Email-Enron.vc",
+  // "./algo2 ../Data/Email-Enron.txt ../Data/Email-Enron.vc",
 
 
-  "./algo1 ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc",
-  "./algo2 ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc",
-  "./algo1 ../Data/roadNet-PA.txt ../Data/roadNet-PA.vc",
-  "./algo2 ../Data/roadNet-PA.txt ../Data/roadNet-PA.vc",
-  "./algo1 ../Data/roadNet-TX.txt ../Data/roadNet-TX.vc",
-  "./algo2 ../Data/roadNet-TX.txt ../Data/roadNet-TX.vc"
+  // "./algo1 ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc",
+  // "./algo2 ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc",
+  // "./algo1 ../Data/roadNet-PA.txt ../Data/roadNet-PA.vc",
+  // "./algo2 ../Data/roadNet-PA.txt ../Data/roadNet-PA.vc",
+  // "./algo1 ../Data/roadNet-TX.txt ../Data/roadNet-TX.vc",
+  // "./algo2 ../Data/roadNet-TX.txt ../Data/roadNet-TX.vc"
+  "gcc bfs.c -o bfs -I cgen",
+  "./bfs ../Data/demo.txt ../Data/demo.vc",
+  "./bfs ../Data/roadNet-CA.txt ../Data/roadNet-CA.vc"
 };
 
 char *real_command(const char *cmd) {
