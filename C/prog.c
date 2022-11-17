@@ -68,13 +68,22 @@ void BFS(int startVertex, bool visited[]){
 }
 
 void DFS(int startVertex, bool visited[]){
+    struct gsllist *stack = gsl_create_list(NULL);
     visited[startVertex] = true;
-    printf("Visited %d\n", startVertex);
-    gsl_traverse(cur, AdjLists[startVertex]) {
-        if (!visited[cur->l]) {
-            DFS(cur->l, visited);
+    gsl_push_front(stack, gtype_l(startVertex));
+    while (!gsl_is_empty(stack)) {
+        int currentVertex = gsl_front_value(stack)->l;
+        gsl_pop_front(stack);
+        printf("Visited %d\n", currentVertex);
+
+        gsl_traverse(cur, AdjLists[currentVertex]) {
+            if (!visited[cur->l]) {
+                visited[cur->l] = true;
+                gsl_push_front(stack, gtype_l(cur->l));
+            }
         }
     }
+    gsl_free(stack);
 }
 
 int CheckVertexCover() {
