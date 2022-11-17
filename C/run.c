@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 const char *cases[] = {
   // "gcc algo1.c -o algo1 -I cgen && gcc algo2.c -o algo2 -I cgen",
   // "./algo1 ../Data/demo.txt ../Data/demo.vc",
